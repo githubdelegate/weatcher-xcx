@@ -1,0 +1,9 @@
+<view class="container">
+<image class='bcg' wx:if='{{bcgImg}}' src='{{bcgImg}}' mode='aspectFill'></image>
+  <view class='search'>
+    <view class='wrapper'>
+      <image src='{{searchImg}}'></image>
+      <input placeholder='查询其他城市' placeholder-class='placeholderClass' confirm-type='search' maxlength='20' value='{{searchText}}' bindconfirm='conformSearch'></input>
+    </view>
+  </view>
+</view>
