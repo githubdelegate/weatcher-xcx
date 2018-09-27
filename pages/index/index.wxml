@@ -49,5 +49,8 @@
         </view>
       </view>
     </view>
+
+    <!-- 开发者 -->
+    <view class='footer'>开发者 ~ ZY</view>
   </view>
 </view>
