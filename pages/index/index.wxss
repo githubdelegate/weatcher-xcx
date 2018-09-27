@@ -55,3 +55,96 @@
 .placeholderClass {
   color: #fff;
 }
+
+.container .content {
+  flex: 2;
+  transition: .3s ease;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  margin-top: 100rpx;
+}
+
+.avatarInfo {
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+}
+
+.avatarInfo .avatar {
+  display: block;
+  overflow: hidden;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.avatarInfo .name {
+  padding: 0 20rpx;
+  font-size: 30rpx;
+}
+
+.avatarInfo .downArrow {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.city {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 50rpx;
+  font-size: 66rpx;
+}
+.city .name {
+  width: 5em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.city .time {
+  display: block;
+  text-align: right;
+  font-size: 24rpx;
+}
+
+.message {
+  font-size: 22rpx;
+  color: #fff;
+  padding: 30rpx 50rpx 0;
+  box-sizing: border-box;
+}
+
+.info {
+  padding-bottom: 50rpx;
+}
+.info .temp,.info .pm, .info .weather{
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.temp {
+  height: 360rpx;
+  font-size: 200rpx;
+}
+
+.info .pm text{
+  font-size: 24rpx;
+  height: 1em;
+  line-height: 1em;
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+  background: rgba(240, 240, 240, .2);
+}
+
+.info .weather {
+  margin-bottom: 30rpx;
+}

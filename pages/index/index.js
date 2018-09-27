@@ -1,13 +1,18 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+let globalData = getApp().globalData
+let sytemInfo = globalData.sytemInfo
 // 引用百度地图微信小程序JSAPI模块 
 var bmap = require('../../lib/bmap-wx.js');
+var utils = require('../../utils/util.js');
+var messages = require('../../data/message.js');
+
 Page({
   data: {
-    weatherData: '',
+    weatherData: {},
     bcgImg:'',
+    message: '',
     bcgImgList: [
       {
         src: '/img/beach-bird-birds-235787.jpg',
@@ -45,7 +50,48 @@ Page({
     searchImg: '/img/search.png'
   },
   // 事件处理逻辑
-  conformSearch: function () {
+  init (param) {
+    let BMap = new bmap.BMapWX({
+      ak: globalData.ak
+    })
+
+    BMap.weather({
+      location: param.location,
+      fail: this.fail,
+      success: this.success,
+    })
+
+  },
+  conformSearch (res) {
+    console.log(res)
+    let val = ((res.detail || {}).value).replace(/\s+/g,'')
+    this.search(val)
+  },
+  search (val) {
+
+  },
+  fail (res) {
+    console.log(data)
+    wx.stopPullDownRefresh()
+
+  },
+  success (data) {
+    console.log(data)
+    wx.stopPullDownRefresh()
+    // 设置天气信息
+    let now = new Date()
+    data.updateTime = now.getTime()
+    data.updateTimeFormat = utils.formatDate(now, "MM-dd hh:mm")
+    let results = data.originalData.results[0] || {}
+    data.pm = utils.pm(results['pm25'])
+    data.temperature = `${results.weather_data[0].date.match(/\d+/g)[2]}`
+    this.setData({
+      weatherData: data
+    })
+    // let now = new Date()
+    // data.updateTime = now.getTime()
+    // let results = data.originalData.results[0] || {}
+    // data.pm  = this.calcPM(results['pm25'])
 
   },
   // 生命周期函数
@@ -59,10 +105,10 @@ Page({
       console.log(data)
     };
     var success = function (data) {
-      var weatherData = data.currentWeather[0];
-      weatherData = '城市：' + weatherData.currentCity + '\n' + 'PM2.5：' + weatherData.pm25 + '\n' + '日期：' + weatherData.date + '\n' + '温度：' + weatherData.temperature + '\n' + '天气：' + weatherData.weatherDesc + '\n' + '风力：' + weatherData.wind + '\n';
+      // var weatherData = data.currentWeather[0];
+      // weatherData = '城市：' + weatherData.currentCity + '\n' + 'PM2.5：' + weatherData.pm25 + '\n' + '日期：' + weatherData.date + '\n' + '温度：' + weatherData.temperature + '\n' + '天气：' + weatherData.weatherDesc + '\n' + '风力：' + weatherData.wind + '\n';
       that.setData({
-        weatherData: weatherData
+        // weatherData: weatherData
       });
     }
     // 发起weather请求 
@@ -77,6 +123,10 @@ Page({
       bcgImg: this.data.bcgImgList[4].src
     })
     // this.data.bcgImg = this.data.bcgImgList[1].src
+    this.init({});
+    this.setData({
+      message: messages.messages()
+    })
   },
   onHide: function () {
 

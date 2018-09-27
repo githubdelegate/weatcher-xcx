@@ -4,9 +4,9 @@
     "pages/logs/logs"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#40a7e7",
+    "navigationBarTitleText": "Nigo 天气",
+    "navigationBarTextStyle":"light"
   }
 }

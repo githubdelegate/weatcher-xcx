@@ -1,1 +1,4 @@
-{}
+{
+  "navigationBarTitleText": "Nigo天气",
+  "enablePullDownRefresh": true
+}

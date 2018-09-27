@@ -6,4 +6,29 @@
       <input placeholder='查询其他城市' placeholder-class='placeholderClass' confirm-type='search' maxlength='20' value='{{searchText}}' bindconfirm='conformSearch'></input>
     </view>
   </view>
+  <view class='content'>
+    <view class='avatarInfo'>
+      <open-data class="avatar" type="userAvatarUrl"></open-data>
+      <open-data class='name' type="userNickName"></open-data>
+      <image class='downArrow' src='/img/down-arrow.png'></image>
+    </view>
+    <view class='info'>
+      <view class='city'>
+      <!-- 城市名称 -->
+        <view class='name'>{{weatherData.originalData.results[0].currentCity}}</view>
+        <!-- 更新时间 -->
+        <text class='time'>{{weatherData.updateTimeFormat}} 更新</text>
+      </view>
+      <!-- 提示消息 -->
+      <view class='message'>{{message}}</view>
+      <!-- 温度 -->
+      <view class='temp num' wx:if='{{weatherData}}'>{{weatherData.temperature}}℃</view>
+      <!-- 天气 -->
+      <view class='weather'>{{weatherData.originalData.results[0].weather_data[0].weather || '--'}}</view>
+      <!-- pm25 -->
+      <view class='pm' wx:if='{{weatherData.pm.val}}'>
+        <text>{{weatherData.pm.desc}} {{weatherData.pm.val}}</text>
+      </view>
+    </view>
+  </view>
 </view>
