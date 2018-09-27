@@ -13,6 +13,7 @@ Page({
     weatherData: {},
     bcgImg:'',
     message: '',
+    icons: ['/img/clothing.png', '/img/carwashing.png', '/img/pill.png', '/img/running.png', '/img/sun.png'],
     bcgImgList: [
       {
         src: '/img/beach-bird-birds-235787.jpg',
