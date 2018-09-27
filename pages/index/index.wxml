@@ -30,5 +30,14 @@
         <text>{{weatherData.pm.desc}} {{weatherData.pm.val}}</text>
       </view>
     </view>
+    <!--最近几天天气列表 -->
+    <view class='guide' wx:if='weatherData.originalData.results[0].weather_data'>
+      <view class='item' wx:for='{{weatherData.originalData.results[0].weather_data}}' wx:key='{{index}}'>
+        <view class='date i'>{{index === 0 ? '今天' : item.date}}</view>
+        <view class='temperature i'>{{item.temperature}}</view>
+        <view class='weather i'>{{item.weather}}</view>
+        <view class='wind i'>{{item.wind}}</view>
+      </view>
+    </view>
   </view>
 </view>

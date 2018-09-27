@@ -148,3 +148,28 @@
 .info .weather {
   margin-bottom: 30rpx;
 }
+
+
+.guide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  background: rgba(0 , 0, 0, .6);
+  margin-bottom: 20rpx;
+}
+
+.guide .item{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.guide .i {
+  padding-bottom: 20rpx;
+}
