@@ -14,7 +14,7 @@
     </view>
     <view class='info'>
       <view class='city'>
-      <!-- 城市名称 -->
+      <!-- 城市名称 -->          
         <view class='name'>{{weatherData.originalData.results[0].currentCity}}</view>
         <!-- 更新时间 -->
         <text class='time'>{{weatherData.updateTimeFormat}} 更新</text>
@@ -52,5 +52,9 @@
 
     <!-- 开发者 -->
     <view class='footer'>开发者 ~ ZY</view>
+  </view>
+  <view wx:if='{{openSetingBtnShow}}' class='openSettingBtn'>
+    <image src='/img/unlock.png'></image>
+    <button open-type='openSetting'></button>
   </view>
 </view>

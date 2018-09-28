@@ -11,6 +11,7 @@ var messages = require('../../data/message.js');
 Page({
   data: {
     weatherData: {},
+    openSetingBtnShow: false,
     bcgImg:'',
     message: '',
     icons: ['/img/clothing.png', '/img/carwashing.png', '/img/pill.png', '/img/running.png', '/img/sun.png'],
@@ -79,6 +80,9 @@ Page({
   success (data) {
     console.log(data)
     wx.stopPullDownRefresh()
+    this.setData({
+      
+    })
     // 设置天气信息
     let now = new Date()
     data.updateTime = now.getTime()
@@ -87,7 +91,8 @@ Page({
     data.pm = utils.pm(results['pm25'])
     data.temperature = `${results.weather_data[0].date.match(/\d+/g)[2]}`
     this.setData({
-      weatherData: data
+      weatherData: data,
+      openSetingBtnShow: false
     })
     // let now = new Date()
     // data.updateTime = now.getTime()
