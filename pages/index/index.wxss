@@ -246,3 +246,17 @@
   opacity: 0;
   z-index: 3;
 }
+
+.menus .menu{
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  z-index: 100;
+  bottom: 150rpx;
+  right: 70rpx;
+  opacity: 0;
+}
+
+.menus .main {
+  opacity: 1;
+}

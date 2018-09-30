@@ -41,6 +41,10 @@ let formatDate = (nDate, date) => {
   return date
 }
 
+let random = (min, max) => {
+  return Math.floor(Math.random() * Math .floor(max));
+}
+
 
 let pm = (value) => {
   if (value > 0 && value <= 50) {
@@ -91,5 +95,6 @@ let pm = (value) => {
 module.exports = {
   formatTime: formatTime,
   formatDate,
-  pm
+  pm,
+  random
 }

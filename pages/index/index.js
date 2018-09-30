@@ -13,7 +13,13 @@ Page({
     weatherData: {},
     openSetingBtnShow: false,
     bcgImg:'',
+    hasPopped: false,
+    bcgColor: '',
     message: '',
+    animationMain: {},
+    animationOne: {},
+    animationTwo: {},
+    animationThree: {},
     icons: ['/img/clothing.png', '/img/carwashing.png', '/img/pill.png', '/img/running.png', '/img/sun.png'],
     bcgImgList: [
       {
@@ -50,6 +56,88 @@ Page({
       }
     ],
     searchImg: '/img/search.png'
+  },
+  // 设置 UI 背景
+  setNavigationBarColor (color) {
+    let bcgColot = color || this.data.bcgColor
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: this.data.bcgColor
+    })
+  },
+
+  // UI 事件处理
+  menuMain () {
+    if (!this.data.hasPopped) {
+      this.popp()
+      this.setData({
+        hasPopped: true
+      })
+    }else{
+      this.takeback()
+      this.setData({
+        hasPopped: false
+      })
+    }
+  },
+
+  // 弹出选项
+  popp () {
+    let animationMain = wx.createAnimation({
+      duration: 200,
+      timingFunction: 'ease-out'
+    })
+    let animationOne = wx.createAnimation({
+      duration: 200,
+      timingFunction: 'ease-out'
+    })
+    let animationTwo = wx.createAnimation({
+      duration: 200,
+      timingFunction: 'ease-out'
+    })
+    let animationThree = wx.createAnimation({
+      duration: 200,
+      timingFunction: 'ease-out'
+    })
+    animationMain.rotateZ(180).step()
+    animationOne.translate(-50, -60).rotateZ(360).opacity(1).step()
+    animationTwo.translate(-90, 0).rotateZ(360).opacity(1).step()
+    animationThree.translate(-50, 60).rotateZ(360).opacity(1).step()
+    this.setData({
+      animationMain: animationMain.export(),
+      animationOne: animationOne.export(),
+      animationTwo: animationTwo.export(),
+      animationThree: animationThree.export(),
+    })
+  },
+  // 收齐选项
+  takeback () {
+    let animationMain = wx.createAnimation({
+      duration: 200,
+      timingFunction: 'ease-out'
+    })
+    let animationOne = wx.createAnimation({
+      duration: 200,
+      timingFunction: 'ease-out'
+    })
+    let animationTwo = wx.createAnimation({
+      duration: 200,
+      timingFunction: 'ease-out'
+    })
+    let animationThree = wx.createAnimation({
+      duration: 200,
+      timingFunction: 'ease-out'
+    })
+    animationMain.rotateZ(0).step()
+    animationOne.translate(0, 0).rotateZ(0).opacity(0).step()
+    animationTwo.translate(0, 0).rotateZ(0).opacity(0).step()
+    animationThree.translate(-0, 0).rotateZ(0).opacity(0).step()
+    this.setData({
+      animationMain: animationMain.export(),
+      animationOne: animationOne.export(),
+      animationTwo: animationTwo.export(),
+      animationThree: animationThree.export(),
+    })
   },
   // 事件处理逻辑
   init (param) {
@@ -125,14 +213,23 @@ Page({
   },
   onShow: function () {
     // 设置背景图片
+    let i = utils.random(0,5)
     this.setData({
-      bcgImg: this.data.bcgImgList[4].src
+      bcgImg: this.data.bcgImgList[i].src,
+      bcgColor: this.data.bcgImgList[i].topColor
     })
+    this.setNavigationBarColor()
     // this.data.bcgImg = this.data.bcgImgList[1].src
     this.init({});
     this.setData({
       message: messages.messages()
     })
+
+    if (openSetingBtnShow) {
+      wx.showToast({
+        title: '请开启定位权限',
+      })
+    }
   },
   onHide: function () {
 
