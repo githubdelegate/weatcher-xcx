@@ -80,6 +80,12 @@ Page({
       })
     }
   },
+  menuThree() {
+    this.menuMain()
+    wx.navigateTo({
+      url: '/pages/about/about'
+    })
+  },
 
   // 弹出选项
   popp () {
@@ -150,7 +156,6 @@ Page({
       fail: this.fail,
       success: this.success,
     })
-
   },
   conformSearch (res) {
     console.log(res)

@@ -1,12 +1,13 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/about/about"
   ],
-  "window":{
-    "backgroundTextStyle":"dark",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#40a7e7",
     "navigationBarTitleText": "Nigo 天气",
-    "navigationBarTextStyle":"light"
+    "navigationBarTextStyle": "light"
   }
 }
