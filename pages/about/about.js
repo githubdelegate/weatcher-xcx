@@ -1,18 +1,70 @@
-// pages/about/about.js.js
-Page({
+// pages/about/about.js.jsl
 
+let utils = require('../../utils/util.js')
+
+Page({
   /**
    * 页面的初始数据
    */
   data: {
+      projectUrl: 'xxxxx',
+      github: 'xxxxx',
+      email: 'xxxxxx',
+      qq: 'xxxxxx',
+      swiperHeight: 'auto',
+      bannerImgList: [
+        {
+          src: 'https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/miniqrcode.jpg',
+          title: 'Quiet Weather',
+        },
+        {
+          src: 'https://raw.githubusercontent.com/myvin/miniprogram/master/juejin/images/miniqrcode.jpg',
+          title: '掘金第三方版',
+        },
+      ],
+  },
+  setSwiperH (res) {
+    this.setData({
+      swiperHeight: `${(res.windowWidth || res.screenWidth) / 375 * 200}px`
+    })
+  },
 
+  previewImages (e) {
+    let index = e.currentTarget.dataset.index || 0
+    let urls = this.data.bannerImgList
+    let arr = []
+    let imgs = urls.forEach(item => {
+      arr.push(item.src)
+    })
+
+    wx.previewImage({
+      urls: arr,
+      current: arr[index],
+      success: function (res) {},
+      fail: function (res) {
+        console.error(res)
+      }
+    })
+  },
+
+  initSwiper () {
+    let systemInfo = getApp().globalData.systemInfo
+    if (utils.isEmptyObject(systemInfo)) {
+      wx.getSystemInfo({
+        success: (res) => {
+          this.setSwiperH(res)
+        },
+      })
+    }else {
+      this.setSwiperH(systemInfo)
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.initSwiper()
   },
 
   /**

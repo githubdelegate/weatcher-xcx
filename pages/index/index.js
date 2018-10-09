@@ -230,7 +230,7 @@ Page({
       message: messages.messages()
     })
 
-    if (openSetingBtnShow) {
+    if (this.openSetingBtnShow) {
       wx.showToast({
         title: '请开启定位权限',
       })

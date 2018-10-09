@@ -14,6 +14,12 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+let isEmptyObject = (obj) => {
+  for (let i in obj) {
+    return false
+  }
+  return true
+}
 
 let formatDate = (nDate, date) => {
   if (isNaN(nDate.getTime())) {
@@ -96,5 +102,6 @@ module.exports = {
   formatTime: formatTime,
   formatDate,
   pm,
-  random
+  random,
+  isEmptyObject
 }
