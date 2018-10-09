@@ -46,7 +46,20 @@ Page({
       }
     })
   },
-
+  copy (e) {
+    let dataset = (e.currentTarget || {}).dataset || {}
+    let title = dataset.title || ''
+    let content = dataset.content || ''
+    wx.setClipboardData({
+      data: content,
+      success () {
+        wx.showToast({
+          title: `已复制${title}`,
+          duration: 2000
+        })
+      },
+    })
+  },
   initSwiper () {
     let systemInfo = getApp().globalData.systemInfo
     if (utils.isEmptyObject(systemInfo)) {
