@@ -1,13 +1,42 @@
-// pages/settting/setting.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    setting: {},
+    show: false,
+    enableUpdate
   },
 
+  switchChange(e) {
+
+    let dataset = e.currentTarget.dataset
+    let switchparam = dataset.switchparam
+    let setting = this.data.setting
+
+    if (switchparam === 'forceUpdate') {
+      if (this.data.enableUpdate) {
+        setting[switchparam] = (e.detail || {}).value
+      }
+    }
+
+    setting[switchparam] = !(e.detail || {}).value
+
+    this.setData({
+      setting,
+    })
+
+    wx.setStorage({
+      key: 'setting',
+      data: setting,
+    })
+  },
+
+  updateInstruc() {
+    this.setData({
+      show: true
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

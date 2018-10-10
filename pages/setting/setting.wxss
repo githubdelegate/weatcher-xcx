@@ -1,5 +1,79 @@
 /* pages/settting/setting.wxss */
 .setting {
   font-size: 28rpx;
-  color: #666;
+  color: #666666;
 }
+
+.s {
+  color: #666666;
+}
+
+.t {
+  overflow: hidden;
+  padding: 0 40rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100rpx;
+  justify-content: space-between;
+}
+
+.item .tip {
+  font-size: 22rpx;
+  color: #999;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sub .content .item {
+  padding-left: 20rpx;
+}
+
+.item .tip image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+
+.item image {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.more {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.item .right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.itme slider {
+  width: 100%;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #40a7e7;
+}
+
+.title {
+  font-size: 32rpx;
+  color: #40a7e7;
+  margin: 26rpx 0;
+}
+
+.wx-switch-input{width:84rpx !important;height:43rpx !important;}
+.wx-switch-input::before{width:82rpx !important;height: 38rpx !important;}
+.wx-switch-input::after{width: 38rpx !important;height: 38rpx !important;}
