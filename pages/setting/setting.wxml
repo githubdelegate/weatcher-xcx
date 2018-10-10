@@ -1,0 +1,21 @@
+<!--pages/settting/setting.wxml-->
+<!-- <text>pages/settting/setting.wxml</text> -->
+<view class='setting'>
+  <view class='s'>
+    <view class='t'>
+      <view class='title'>
+        <view>自定义</view>
+      </view>
+      <view class='content'>
+        <view class='item'>
+          <view>打开顶部城市天气快捷搜索</view>
+          <switch color='#40a7e7' checked='{{!setting.hiddenSearch}}' bindchange='switchChange' data-switchparam='hiddenSearch'></switch>
+        </view>
+        <view class='item'>
+          <view>显示生活指数</view>
+          <switch color='#40a7e7' checked='{{!setting.hiddenIndex}}' bindchange='switchChange' data-switchparam='hiddenIndex'></switch>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -87,6 +87,12 @@ Page({
     })
   },
 
+  menuTwo () {
+      this.menuMain()
+      wx.navigateTo({
+        url: '/pages/setting/setting',
+      })
+  },
   // 弹出选项
   popp () {
     let animationMain = wx.createAnimation({

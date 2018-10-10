@@ -1,0 +1,5 @@
+/* pages/settting/setting.wxss */
+.setting {
+  font-size: 28rpx;
+  color: #666;
+}
