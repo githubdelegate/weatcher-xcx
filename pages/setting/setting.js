@@ -5,7 +5,7 @@ Page({
   data: {
     setting: {},
     show: false,
-    enableUpdate
+    enableUpdate: false,
   },
 
   switchChange(e) {
@@ -35,6 +35,34 @@ Page({
   updateInstruc() {
     this.setData({
       show: true
+    })
+  },
+
+  getHCEState () {
+    wx.showLoading({
+      title: '检测中...',
+    })
+
+    wx.getHCEState({
+      success: function (res) {
+        wx.hideLoading()
+        wx.showModal({
+          title: '检测结果',
+          content: '高设备支持NFC功能',
+          showCancel: false,
+          confirmColor: '#40a7e7',
+          confirmText: '朕知道了'
+        })
+      },
+      fail: function(res) {
+        wx.hideLoading()
+        wx.showModal({
+          title: '检测结果',
+          content: '该设备不支持 NFC 功能',
+          confirmColor: '#40a7e7',
+          confirmText: '朕知道了'
+        })
+      }
     })
   },
   /**

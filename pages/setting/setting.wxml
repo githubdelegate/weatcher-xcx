@@ -31,7 +31,16 @@
       </view>
     </view>
     <!-- 小工具 -->
-    <view></view>
+    <view class='t'>
+      <view class='title'>小工具</view>
+      <view class='content sub'>
+        <view class='subtitle'>NFC</view>
+        <view class='item' catchtap='getHCEState'>
+          <view>检测是否支持NFC</view>
+          <image src='/img/arrow.png'></image>
+        </view>
+      </view>
+    </view>
     <!-- 清除数据 -->
     <view></view>
   </view>
