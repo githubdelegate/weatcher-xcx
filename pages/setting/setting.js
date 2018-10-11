@@ -68,6 +68,72 @@ Page({
       show: true
     })
   },
+  removeStorge (e) {
+
+    let  that = this
+    let datatype = e.currentTarget.dataset.type
+    if (datatype === 'menu') {
+      wx.setStorage({
+        key: 'pos',
+        data: {
+          top: 'auto',
+          lef: 'auto',
+        },
+        success: function (res) {
+          wx.showToast({
+            title: '悬浮球已复位',
+          })
+        }
+      })
+    }else if (datatype === 'setting') {
+
+      wx.showModal({
+        title: '提示',
+        content: '确认要初始化设置',
+        cancelText: '容朕想想',
+        confirmColor: '#40a7e7',
+        success: (res) => {
+          if (res.confirm) {
+            wx.removeStorage({
+              key: 'setting',
+              success: function(res) {
+                wx.showToast({
+                  title: '设置已初始化',
+                })
+                that.setData({
+                  setting: {}
+                })
+              },
+            })
+          }
+        }
+      })
+
+    }else if (datatype === 'all') {
+
+      wx.showModal({
+        title: '提示',
+        content: '确认要删除',
+        cancelText: '容朕想想',
+        confirmColor: '#40a7e7',
+        success(res) {
+          if (res.confirm) {
+            wx.clearStorage({
+              success: (res) => {
+                wx.showToast({
+                  title: '数据已清除',
+                })
+                that.setData({
+                  setting: {},
+                  pos: {}
+                })
+              }
+            })
+          }
+        }
+      })
+    }
+  },
 
   getHCEState () {
     wx.showLoading({
