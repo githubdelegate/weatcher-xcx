@@ -6,6 +6,12 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    wx.getSystemInfo({
+      success: (res) => {
+        this.globalData.systemInfo = res
+        this.globalData.isIPhoneX = /iphonex/gi.test(res.model.replace(/\s+/,''))
+      },
+    })
     // 登录
     wx.login({
       success: res => {

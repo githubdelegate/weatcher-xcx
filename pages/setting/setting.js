@@ -6,6 +6,7 @@ Page({
     setting: {},
     show: false,
     enableUpdate: false,
+    screenBrightness: '获取中'
   },
 
   switchChange(e) {
@@ -29,6 +30,36 @@ Page({
     wx.setStorage({
       key: 'setting',
       data: setting,
+    })
+  },
+
+  screenBrightnessChanging (e) {
+      this.setScreenBrightness(e.detail.value)
+  },
+
+  getScreenBrightness () {
+    wx.getScreenBrightness({
+      success: (res) => {
+        this.setData({
+          screenBrightness: Number(res.value * 100).toFixed(0),
+        })
+      },
+      fail: (res) => {
+        this.setData({
+          screenBrightness: '获取失败'
+        })
+      }
+    })
+  },
+
+  setScreenBrightness (val) {
+    wx.setScreenBrightness({
+      value: val / 100,
+      success: (res) => {
+        this.setData({
+          screenBrightness: val
+        })
+      },
     })
   },
 
@@ -65,6 +96,12 @@ Page({
       }
     })
   },
+
+  getsysteminfo () {
+    wx.navigateTo({
+      url: '/pages/systeminfo/systeminfo',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -83,7 +120,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      this.getScreenBrightness()
   },
 
   /**
